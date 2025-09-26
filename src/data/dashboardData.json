@@ -1,0 +1,24 @@
+[
+  {
+    "category": "CSPM Executive Dashboard",
+    "widgets": [
+      { "id": 1, "name": "Security Overview", "text": "Random text for Security Overview" },
+      { "id": 2, "name": "Compliance Status", "text": "Random text for Compliance Status" },
+      { "id": 3, "name": "Threat Alerts", "text": "Random text for Threat Alerts" }
+    ]
+  },
+  {
+    "category": "Cloud Monitoring", 
+    "widgets": [
+      { "id": 4, "name": "CPU Usage", "text": "Random text for CPU Usage" },
+      { "id": 5, "name": "Memory Usage", "text": "Random text for Memory Usage" }
+    ]
+  },
+  {
+    "category": "User Management",
+    "widgets": [    
+      { "id": 6, "name": "Active Users", "text": "Random text for Active Users" },
+      { "id": 7, "name": "Login Attempts", "text": "Random text for Login Attempts" }
+    ]
+  }
+]
