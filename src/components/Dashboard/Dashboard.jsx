@@ -6,7 +6,7 @@ const Dashboard = () => {
 
 
     const [data, setData] = useState(dashboarData);
-    
+
 
     return (
         <div className='w-full h-screen mt-5'>
@@ -25,12 +25,16 @@ const Dashboard = () => {
                             <h1 className='text-md font-medium'>{item.category}</h1>
                             <div className='flex gap-4'>
                                 {
-                                    item.widgets.map((widget) => (
-                                        <div className='bg-white px-3 py-2 rounded-md w-96 h-40' key={widget.id}>
-                                            <h2>{widget.name}</h2>
-                                            <p className='text-gray-500 text-sm'>{widget.text}</p>
-                                        </div>
-                                    ))
+                                    item.widgets.length > 0 ? (
+                                        item.widgets.map((widget) => (
+                                            <div className='bg-white px-3 py-2 rounded-md w-96 h-40' key={widget.id}>
+                                                <h2>{widget.name}</h2>
+                                                <p className='text-gray-500 text-sm'>{widget.text}</p>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p className='text-gray-400 italic'>No widget found</p>
+                                    )
                                 }
                             </div>
                         </div>
