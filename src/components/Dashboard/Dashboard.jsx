@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaPlus } from "react-icons/fa";
 import dashboarData from "../../data/dashboardData.json"
 
 const Dashboard = () => {
+
+
+    const [data, setData] = useState(dashboarData);
+    
 
     return (
         <div className='w-full h-screen mt-5'>
@@ -16,7 +20,7 @@ const Dashboard = () => {
 
             <div className='px-8 flex flex-col gap-4 mt-5'>
                 {
-                    dashboarData.map((item, index) => (
+                    data.map((item, index) => (
                         <div key={index}>
                             <h1 className='text-md font-medium'>{item.category}</h1>
                             <div className='flex gap-4'>
