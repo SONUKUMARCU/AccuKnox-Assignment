@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { FaPlus } from "react-icons/fa";
 import dashboarData from "../../data/dashboardData.json"
+import { useSelector } from 'react-redux';
 
 const Dashboard = () => {
 
+    const { categories, searchTerm } = useSelector((state)=> state.dashboard);
 
-    const [data, setData] = useState(dashboarData);
+    
 
 
     return (
@@ -27,7 +29,7 @@ const Dashboard = () => {
                                 {
                                     item.widgets.length > 0 ? (
                                         item.widgets.map((widget) => (
-                                            <div className='bg-white px-3 py-2 rounded-md w-96 h-40' key={widget.id}>
+                                            <div className='bg-white px-3 py-2 rounded-md w-96 h-40 drop-shadow-lg' key={widget.id}>
                                                 <h2>{widget.name}</h2>
                                                 <p className='text-gray-500 text-sm'>{widget.text}</p>
                                             </div>
