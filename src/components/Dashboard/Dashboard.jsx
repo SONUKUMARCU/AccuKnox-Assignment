@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import { FaPlus } from "react-icons/fa";
 import dashboarData from "../../data/dashboardData.json"
 import { useSelector } from 'react-redux';
+import Widgets from '../Widget/Widgets';
 
 const Dashboard = () => {
 
     const { categories, searchTerm } = useSelector((state)=> state.dashboard);
 
-
+    const [showWidget,setShowWidget] = useState(false)
 
     const filteredCategories = categories.map((category) => (
         {
@@ -19,11 +20,15 @@ const Dashboard = () => {
 
     return (
         <div className='w-full h-screen mt-5'>
+            {showWidget && <Widgets setShowWidget={setShowWidget}/>} 
             <div className='flex justify-between px-6 py-4'>
                 <h1 className='text-2xl font-medium'>CNAPP Dashboard</h1>
-                <button className='bg-white border-1 border-gray-200 rounded-md p-2 flex items-center gap-2 text-sm cursor-pointer'>
+                <button 
+                    className='bg-white border-1 border-gray-200 rounded-md p-2 flex items-center gap-2 text-sm cursor-pointer'
+                    onClick={()=> setShowWidget(true)}
+                >
                     Add Widget
-                    <FaPlus className='text-gray-400' />
+                    <FaPlus className='text-gray-400'/>
                 </button>
             </div>
 
