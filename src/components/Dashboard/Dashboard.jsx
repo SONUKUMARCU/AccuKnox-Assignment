@@ -7,7 +7,14 @@ const Dashboard = () => {
 
     const { categories, searchTerm } = useSelector((state)=> state.dashboard);
 
-    
+
+
+    const filteredCategories = categories.map((category) => (
+        {
+            ...category,
+            widgets : category.widgets.filter(widget => widget.name.toLowerCase().includes(searchTerm.toLowerCase()))
+        }
+    ));
 
 
     return (
@@ -22,7 +29,7 @@ const Dashboard = () => {
 
             <div className='px-8 flex flex-col gap-4 mt-5'>
                 {
-                    data.map((item, index) => (
+                    filteredCategories.map((item, index) => (
                         <div key={index}>
                             <h1 className='text-md font-medium'>{item.category}</h1>
                             <div className='flex gap-4'>
