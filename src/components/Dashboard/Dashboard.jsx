@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FaPlus } from "react-icons/fa";
 import dashboarData from "../../data/dashboardData.json"
 import { useSelector } from 'react-redux';
-import Widgets from '../Widget/Widgets';
+import AddWidgetModel from '../AddWidgetModel/AddWidgetModel';
 
 const Dashboard = () => {
 
@@ -20,7 +20,7 @@ const Dashboard = () => {
 
     return (
         <div className='w-full h-screen mt-5'>
-            {showWidget && <Widgets setShowWidget={setShowWidget}/>} 
+            {showWidget && <AddWidgetModel setShowWidget={setShowWidget}/>} 
             <div className='flex justify-between px-6 py-4'>
                 <h1 className='text-2xl font-medium'>CNAPP Dashboard</h1>
                 <button 
