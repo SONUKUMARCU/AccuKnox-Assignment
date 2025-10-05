@@ -9,6 +9,8 @@ const AddWidgetModel = ({ setShowWidget }) => {
 
     const [activeCategory, setActiveCategory] = useState(categories[0]?.category || "")
 
+    const selectedCategory = categories.find((item) => item.category === activeCategory);
+
     return (
         <div className='fixed top-0 left-0 right-0 bottom-0 z-10 bg-black/30 flex justify-end transition-all duration-300'>
             <div className='h-full bg-white w-[35%]'>
@@ -28,7 +30,7 @@ const AddWidgetModel = ({ setShowWidget }) => {
                                 <span
                                     key={index}
                                     onClick={() => setActiveCategory(item.category)}
-                                    className={`${activeCategory === item.category ? "border-b-2 border-blue-950 bg-black/10" : "text-gray-500"} p-2 cursor-pointer`}
+                                    className={`${activeCategory === item.category ? "border-b-2 border-blue-950 bg-black/10 scale-100" : "text-gray-500 scale-95"} p-2 cursor-pointer transition-all duration-200`}
                                 >
                                     {item.category}
                                 </span>
@@ -37,7 +39,7 @@ const AddWidgetModel = ({ setShowWidget }) => {
                     </div>
                 </div>
 
-                <Widget />
+                <Widget widgets={selectedCategory}/>
             </div>
         </div>
     )
