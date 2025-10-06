@@ -39,7 +39,7 @@ const AddWidgetModel = ({ setShowWidget }) => {
                     </div>
                 </div>
 
-                <Widget widgets={selectedCategory} setShowWidget={setShowWidget}/>
+                <Widget widgets={selectedCategory} setShowWidget={setShowWidget} activeCategory={activeCategory}/>
             </div>
         </div>
     )
