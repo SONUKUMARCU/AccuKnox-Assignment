@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
-const Widget = ({ widgets }) => {
-
-    console.log(widgets)
+const Widget = ({ widgets,setShowWidget }) => {
 
     return (
-        <div className='mt-2 p-4 flex flex-col justify-between border-2'>
+        <div className='mt-2 p-4 flex-grow flex flex-col justify-between'>
             <div>
                 {
                     widgets["widgets"].map((item, index) => (
@@ -17,9 +15,20 @@ const Widget = ({ widgets }) => {
                     ))
                 }
             </div>
+
             <div>
-                <button className='px-8 py-2 rounded-md text-sm font-medium border border-gray-200 bg-white'>cancel</button>
-                <button className='px-8 py-2 rounded-md text-sm font-medium bg-blue-950 text-white'>confirm</button>
+                
+            </div>
+            <div className='self-end'>
+                <button 
+                    className='px-8 py-2 rounded-md text-sm font-medium border border-gray-300 bg-white mr-4 drop-shadow-2xl cursor-pointer'
+                    onClick={()=> setShowWidget(false)}
+                >
+                        cancel
+                    </button>
+                <button 
+                    className='px-8 py-2 rounded-md text-sm font-medium bg-blue-950 text-white cursor-pointer'
+                >confirm</button>
             </div>
         </div>
     )
