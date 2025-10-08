@@ -6,7 +6,6 @@ const Widget = ({ widgets, setShowWidget, activeCategory }) => {
     const [formData, setFormData] = useState({ name: '', text: '' });
 
     const handleChange = (e) => {
-        console.log(typeof e.target.name)
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
