@@ -1,12 +1,29 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { addWidget } from "../../store/dashboardSlice"
 
 const Widget = ({ widgets, setShowWidget, activeCategory }) => {
 
     const [formData, setFormData] = useState({ name: '', text: '' });
 
+    const dispatch = useDispatch();
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const newWidget = {
+            id: Date.now(),
+            name: formData.name,
+            text: formData.text
+        };
+
+        dispatch(addWidget({categoryName : activeCategory, widget : newWidget}));
+
+        setFormData({name : '',text : ''});
     }
 
     return (
@@ -20,7 +37,7 @@ const Widget = ({ widgets, setShowWidget, activeCategory }) => {
                         </div>
                     ))
                 }
-                <form className='mt-5'>
+                <form className='mt-5' onSubmit={handleSubmit}>
                     <input
                         className='border-1 border-gray-300 w-full px-3 py-2 rounded-md outline-none'
                         type="text" name="name" placeholder='Enter widget name' required
@@ -32,7 +49,7 @@ const Widget = ({ widgets, setShowWidget, activeCategory }) => {
                         className='border-1 border-gray-300 w-full px-3 py-2 rounded-md mt-2 outline-none resize-none' name="text" placeholder='Enter description...'
                         required
                         value={formData.text}
-                        onChange={handleChange} 
+                        onChange={handleChange}
                     ></textarea>
 
                     <button
