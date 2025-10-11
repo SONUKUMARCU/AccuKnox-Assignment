@@ -5,6 +5,7 @@ import { addWidget } from "../../store/dashboardSlice"
 const Widget = ({ widgets, setShowWidget, activeCategory }) => {
 
     const [formData, setFormData] = useState({ name: '', text: '' });
+    const [selectedWidgets, setSelectedWidgets] = useState([]);
 
     const dispatch = useDispatch();
 
@@ -21,9 +22,14 @@ const Widget = ({ widgets, setShowWidget, activeCategory }) => {
             text: formData.text
         };
 
-        dispatch(addWidget({categoryName : activeCategory, widget : newWidget}));
+        dispatch(addWidget({ categoryName: activeCategory, widget: newWidget }));
 
-        setFormData({name : '',text : ''});
+        setFormData({ name: '', text: '' });
+
+    }
+
+    const handleCheckboxChange = (widgetid) => {
+        setSelectedWidgets((prev) => prev.includes(widgetid) ? prev.filter((id) => id !== widgetid) : [...prev,widgetid]);
     }
 
     return (
@@ -32,7 +38,11 @@ const Widget = ({ widgets, setShowWidget, activeCategory }) => {
                 {
                     widgets["widgets"].map((item, index) => (
                         <div key={index} className='p-2 border border-gray-200 rounded mt-2 flex items-center gap-2 text-sm'>
-                            <input type="checkbox" name="widget" />
+                            <input
+                                type="checkbox" name="widget"
+                                checked={selectedWidgets.includes(item.id)}
+                                onChange={() => handleCheckboxChange(item.id)}
+                            />
                             <span className='text-blue-950/80'>{item.name}</span>
                         </div>
                     ))
