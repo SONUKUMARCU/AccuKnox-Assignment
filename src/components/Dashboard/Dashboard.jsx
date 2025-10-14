@@ -37,7 +37,7 @@ const Dashboard = () => {
                     filteredCategories.map((item, index) => (
                         <div key={index}>
                             <h1 className='text-md font-medium'>{item.category}</h1>
-                            <div className='flex gap-4'>
+                            <div className='flex flex-wrap gap-4'>
                                 {
                                     item.widgets.length > 0 ? (
                                         item.widgets.map((widget) => (

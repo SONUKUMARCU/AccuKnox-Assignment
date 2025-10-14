@@ -30,6 +30,7 @@ const Widget = ({ widgets, setShowWidget, activeCategory }) => {
 
     const handleCheckboxChange = (widgetid) => {
         setSelectedWidgets((prev) => prev.includes(widgetid) ? prev.filter((id) => id !== widgetid) : [...prev,widgetid]);
+        console.log(selectedWidgets);
     }
 
     return (
