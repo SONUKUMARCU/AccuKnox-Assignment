@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { addWidget } from "../../store/dashboardSlice"
+import { useDispatch, useSelector } from 'react-redux'
+import { addWidget, updateWidget } from "../../store/dashboardSlice"
 
 const Widget = ({ widgets, setShowWidget, activeCategory }) => {
+
+    const { categories } = useSelector((state) => state.dashboard)
 
     const [formData, setFormData] = useState({ name: '', text: '' });
     const [selectedWidgets, setSelectedWidgets] = useState([]);
@@ -28,9 +30,13 @@ const Widget = ({ widgets, setShowWidget, activeCategory }) => {
 
     }
 
+    const handleConfirm = () => {
+        dispatch(updateWidget({categoryName : activeCategory, selectedWidgetIds : selectedWidgets}))
+        setShowWidget(false);
+    }
+
     const handleCheckboxChange = (widgetid) => {
-        setSelectedWidgets((prev) => prev.includes(widgetid) ? prev.filter((id) => id !== widgetid) : [...prev,widgetid]);
-        console.log(selectedWidgets);
+        setSelectedWidgets((prev) => prev.includes(widgetid) ? prev.filter((id) => id !== widgetid) : [...prev, widgetid]);
     }
 
     return (
@@ -78,7 +84,7 @@ const Widget = ({ widgets, setShowWidget, activeCategory }) => {
                 </button>
                 <button
                     className='px-8 py-2 rounded-md text-sm font-medium bg-blue-950 text-white cursor-pointer'
-                    onClick={() => setShowWidget(false)}
+                    onClick={handleConfirm}
                 >confirm</button>
             </div>
         </div>

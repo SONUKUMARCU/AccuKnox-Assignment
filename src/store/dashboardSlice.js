@@ -27,6 +27,15 @@ const dashboardSlice = createSlice({
                 category.widgets = category.widgets.filter(w => w.id !== widgetId);
             }
         },
+        updateWidget : (state,action) => {
+            const { categoryName, selectedWidgetIds } = action.payload;
+
+            const category = state.categories.find(category => category.category === categoryName );
+
+            if(category) {
+                category.widgets = category.widgets.filter(widget => !selectedWidgetIds.includes(widget.id))
+            }
+        },
         setSearchTerm: (state, action) => {
             state.searchTerm = action.payload;
         }
@@ -34,5 +43,5 @@ const dashboardSlice = createSlice({
 })
 
 
-export const { addWidget, removeWidget, setSearchTerm } = dashboardSlice.actions;
+export const { addWidget, removeWidget,updateWidget, setSearchTerm } = dashboardSlice.actions;
 export default dashboardSlice.reducer;
