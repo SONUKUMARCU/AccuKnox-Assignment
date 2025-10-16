@@ -22,6 +22,6 @@ npm install
 
 ### 3. Start the Application
 ```bash
-npm start
+npm run dev
 ```
 
